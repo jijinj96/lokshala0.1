@@ -69,6 +69,8 @@ public class EventsServlet extends HttpServlet {
 				event.put("description", e.getEvent_description());
 				event.put("image", e.getEvent_image());
 				event.put("school_id", e.getSchool_id());
+				event.put("date", e.getDate());
+				event.put("school-name", e.getSchool_name());
 				eventsArray.add(event);
 			}
 

@@ -49,15 +49,16 @@ public class Account {
 		}
 		
 		if(school_id > 0){
-			sql = "insert into event (school_id,event_title,event_description,image) values(?,?,?,?)";
+			sql = "insert into event (school_id,event_title,event_description,image,date) values(?,?,?,?,?)";
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1, school_id);
 			stmt.setString(2, title);
 			stmt.setString(3, desc);
-			stmt.setString(4, "images/annual.jpg");
+			stmt.setString(4, "images/"+title+".jpg");
+			stmt.setString(5, date);
 			int i = stmt.executeUpdate();
 			if(i > 0){
-				setMsg("successsfully registered");
+				setMsg("successsfully posted");
 			}
 			else{
 				setMsg("cannot post");
@@ -155,6 +156,7 @@ public class Account {
 			s.setSchool_Name(rs.getString("school_name"));
 			s.setAddress(rs.getString("school_address"));
 			s.setTimings(rs.getString("school_time"));
+			s.setImages(rs.getString("image"));
 		}
 		dbClose();
 		return s;
@@ -411,6 +413,17 @@ public class Account {
 			event.setEvent_description(rs.getString("event_description"));
 			event.setEvent_image(rs.getString("image"));
 			event.setSchool_id(rs.getInt("school_id"));
+			int schoolId = rs.getInt("school_id");
+			String sql1 = "select school_name from school where school_id = ?";
+			PreparedStatement stmt1 = con.prepareStatement(sql1);
+			stmt1.setInt(1, schoolId);
+			ResultSet rs1 = stmt1.executeQuery();
+			String schoolName = "";
+			while(rs1.next()){
+				schoolName = rs1.getString("school_name");
+			}
+			event.setSchool_name(schoolName);
+			event.setDate(rs.getString("date"));
 			events.add(event);
 		}	
 		dbClose();

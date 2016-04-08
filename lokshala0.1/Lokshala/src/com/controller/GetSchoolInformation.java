@@ -59,6 +59,7 @@ public class GetSchoolInformation extends HttpServlet {
 			obj.put("schoolName", school.getSchool_Name());
 			obj.put("timings", school.getTimings());
 			obj.put("address", school.getAddress());
+			obj.put("image", school.getImages());
 			System.out.println(obj.toJSONString());
 			StringWriter out = new StringWriter();
 			obj.writeJSONString(out);

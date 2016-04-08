@@ -7,6 +7,24 @@ public class Events {
 	private int event_id;
 	private int school_id;
 	private int feedback;
+	private String date;
+	private String school_name ;
+	
+	public String getSchool_name() {
+		return school_name;
+	}
+
+	public void setSchool_name(String school_name) {
+		this.school_name = school_name;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
 
 	public int getFeedback() {
 		return feedback;
