@@ -10,7 +10,7 @@ $( ".input" ).focusout(function() {
 
 $(".login").submit(function(){
 	console.log('here');
-	 $(this).find(".submit i").removeAttr('class').addClass("fa fa-times").css({"color":"#fff"});
+	 $(this).find(".submit i").removeAttr('class').addClass("fa fa-check").css({"color":"#fff"});
 	  $(".submit").css({"background":"#2ecc71", "border-color":"#2ecc71"});
 	  $(".feedback").show().animate({"opacity":"1", "bottom":"-80px"}, 400);
 	  $("input").css({"border-color":"#2ecc71"});
